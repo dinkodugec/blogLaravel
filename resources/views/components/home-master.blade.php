@@ -44,7 +44,7 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
           </li>
-          
+
            @else
            <li class="nav-item">
             <a class="nav-link" href="/login">Log In</a>
@@ -54,8 +54,14 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
           </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>x
         </ul>
       </div>
     </div>
