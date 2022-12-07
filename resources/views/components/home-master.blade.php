@@ -39,9 +39,20 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
+
+          @if (Auth::check())
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="{{ route('admin.index') }}">Admin</a>
           </li>
+          
+           @else
+           <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+          </li>
+
+          @endif
+
+
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
