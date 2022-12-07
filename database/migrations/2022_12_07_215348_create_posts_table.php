@@ -15,6 +15,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');  //whwn we delete user we also delete a post from that user
+            $table->string('title');
+            $table->text('post_image')->nullable();
+            $table->text('body');
             $table->timestamps();
         });
     }
