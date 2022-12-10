@@ -25,11 +25,18 @@ class PostController extends Controller
    public function store()
    {
 
-      Auth::user();  //get a user
-      auth()->user();  //also..get a user
-      //so that we create post with related user
+     $inputs = request()->validate([  /* validate inputs that is comming from form and save in this array - $inputs*/
 
-    dd(request()->all()); //helper function request will show everything what is comming from this endpoint(in web.php)
+         'title' => 'required|min:8|max:255',
+         'post_image' => 'file',
+         'body' => 'required'
+      ]);
+
+      if(request('post_image')){
+         $inputs['post_image'] = request('post_image')->store('images');  //store method maka a folder and store image in random way
+      }
+
+
 
    }
 }
