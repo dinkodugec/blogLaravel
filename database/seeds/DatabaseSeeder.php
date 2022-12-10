@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,9 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\User', 10)->create()->each(function($user){
-            $user->posts()->save(factory('App\Post')->make());
 
+               /*  DID NOT FIND A USER some bug in laravel */
+               factory(App\User::class, 50)->create()->each(function ($user) {
+                $user->posts()->save(factory(App\Post::class)->make());
             });
+
+          /*   factory(User::class, 10)->create(); */
     }
 }
