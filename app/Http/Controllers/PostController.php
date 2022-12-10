@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-   public function show($id)
+   public function show(Post $post)  //injected clas - route model binding
    {
 
-   /*    dd($id); */
-
-      Post::findOrFail($id);
-
-     return view('blog-post');
+    return view('blog-post', ['post' => $post]);
 
    }
 }
