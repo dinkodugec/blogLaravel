@@ -22,7 +22,7 @@ class PostController extends Controller
 
    }
 
-   public function store()
+   public function store(Request $request)
    {
 
      $inputs = request()->validate([  /* validate inputs that is comming from form and save in this array - $inputs*/
@@ -35,6 +35,8 @@ class PostController extends Controller
       if(request('post_image')){
          $inputs['post_image'] = request('post_image')->store('images');  //store method maka a folder and store image in random way
       }
+
+      dd($request->post_image);
 
 
 
