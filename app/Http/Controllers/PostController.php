@@ -6,6 +6,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -40,17 +41,44 @@ class PostController extends Controller
 
        auth()->user()->posts()->create($inputs);
 
-       return back();
+       session()->flash('post-created-message', 'Post with title was created' . $inputs['title'] );
+
+       return redirect()->route('post.index'); //redirect to route
 
 
    }
+
+   protected function getPostImageAttribute($value)
+    {
+      if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
+          return $value;
+      }
+      return asset('storage/' . $value);
+    }
+
+
+
 
    public function index()
    {
 
      $posts = Post::all();
 
+     foreach($posts as $post){
+      $post->post_image = $this->getPostImageAttribute($post->post_image);
+     }
+
     return view('admin.posts.index', ['posts' => $posts]);
 
+   }
+
+   public function destroy(Post $post, Request $request)
+   {
+
+      $post->delete();
+
+      $request->session()->flash('message', 'Post was deleted');
+
+      return back();
    }
 }
