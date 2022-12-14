@@ -20,12 +20,16 @@ class PostController extends Controller
    public function create()
    {
 
+    $this->authorize('create', Post::class);  //check for auth user to can create
+
     return view('admin.posts.create');
 
    }
 
    public function store()
    {
+
+    $this->authorize('create', Post::class);   //create method from PostPolicy
 
      $inputs = request()->validate([  /* validate inputs that is comming from form and save in this array - $inputs*/
 
@@ -53,7 +57,7 @@ class PostController extends Controller
    {
         /*   $this->authorize('view', $post);  */ //only authorize user can access esit view in blade
 
-    
+        $this->authorize('view', $post);
 
           return view('admin.posts.edit', ['post'=> $post]);
 
@@ -73,9 +77,9 @@ class PostController extends Controller
    public function index()
    {
 
-      $posts = Post::all();
+   /*    $posts = Post::all(); */
 
-  /*   $posts = auth()->user()->posts();  */  // -it bring collection of objects, array of instatnces, from auth() user vi method posts() in User class
+        $posts = auth()->user()->posts;    // -it bring collection of objects, array of instatnces, from auth() user vi method posts() in User class
 
    /*  $posts = auth()->user()->posts;  */    //array of items
 
@@ -93,6 +97,8 @@ class PostController extends Controller
       $post->delete();
 
       $request->session()->flash('message', 'Post was deleted');
+
+      $this->authorize('update', $post);
 
 
       return back();
@@ -116,7 +122,7 @@ class PostController extends Controller
          $post->title = $inputs['title'];
          $post->body = $inputs['body'];
 
-      $this->authorize('update', $post);
+      $this->authorize('update', $post);  //update can only auth user
 
      $post->save();
 
