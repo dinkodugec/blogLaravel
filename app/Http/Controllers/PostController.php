@@ -48,6 +48,17 @@ class PostController extends Controller
 
    }
 
+
+   public function edit(Post $post)
+   {
+        /*   $this->authorize('view', $post);  */ //only authorize user can access esit view in blade
+
+    
+
+          return view('admin.posts.edit', ['post'=> $post]);
+
+   }
+
    protected function getPostImageAttribute($value)
     {
       if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
@@ -62,7 +73,11 @@ class PostController extends Controller
    public function index()
    {
 
-     $posts = Post::all();
+      $posts = Post::all();
+
+  /*   $posts = auth()->user()->posts();  */  // -it bring collection of objects, array of instatnces, from auth() user vi method posts() in User class
+
+   /*  $posts = auth()->user()->posts;  */    //array of items
 
      foreach($posts as $post){
       $post->post_image = $this->getPostImageAttribute($post->post_image);
@@ -101,7 +116,7 @@ class PostController extends Controller
          $post->title = $inputs['title'];
          $post->body = $inputs['body'];
 
-         $this->authorize('update', $post);
+      $this->authorize('update', $post);
 
      $post->save();
 
