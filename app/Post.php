@@ -29,9 +29,9 @@ class Post extends Model
 
 
    //accesors - return data
-   public function getPostImageAttribute($value)
+ /*   public function getPostImageAttribute($value)
     {
 
         return asset($value);
-    }
+    } */
 }

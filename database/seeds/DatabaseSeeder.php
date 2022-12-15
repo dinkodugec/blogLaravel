@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-               /*  DID NOT FIND A USER some bug in laravel */
+           
                factory(App\User::class, 50)->create()->each(function ($user) {
                 $user->posts()->save(factory(App\Post::class)->make());
             });

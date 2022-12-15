@@ -63,14 +63,14 @@ class PostController extends Controller
 
    }
 
-   protected function getPostImageAttribute($value)
+/*    protected function getPostImageAttribute($value)
     {
       if (strpos($value, 'https://') !== FALSE || strpos($value, 'http://') !== FALSE) {
           return $value;
       }
       return asset('storage/' . $value);
     }
-
+ */
 
 
 
@@ -79,14 +79,15 @@ class PostController extends Controller
 
    /*    $posts = Post::all(); */
 
-        $posts = auth()->user()->posts;    // -it bring collection of objects, array of instatnces, from auth() user vi method posts() in User class
+        $posts = auth()->user()->posts;
+           // -it bring collection of objects, array of instatnces, from auth() user vi method posts() in User class
 
    /*  $posts = auth()->user()->posts;  */    //array of items
 
-     foreach($posts as $post){
+   /*   foreach($posts as $post){
       $post->post_image = $this->getPostImageAttribute($post->post_image);
      }
-
+ */    
     return view('admin.posts.index', ['posts' => $posts]);
 
    }

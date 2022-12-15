@@ -48,10 +48,14 @@
                <tr>
                   <td>{{$post->id}} </td>
                   <td>{{ $post->user->name }}</td>
-                  <td><a href="{{ route('post.update', $post->id) }}">{{ $post->title }}</a></td>
-                  <td>   <img
+                  <td><a href="{{ route('post.edit', $post->id) }}">{{ $post->title }}</a></td>
+                  <td>
+
+                 <img
                      height="40px"
-                     src="{{ $post->post_image}}"
+                    {{--  src="{{storage_path( $post->post_image)}}" --}}
+                     src="{{ asset("storage/" . $post->post_image)}}"
+
                      alt="Post Image File"
                  ></td>
                  <td>{{$post->created_at->diffForHumans()}}</td>
