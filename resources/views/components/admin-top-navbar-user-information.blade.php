@@ -13,7 +13,7 @@
   </a>
   <!-- Dropdown - User Information -->
   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-    <a class="dropdown-item" href="#">
+    <a class="dropdown-item" href="{{ route('user.profile.show', auth()->user()) }}">
       <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
       Profile
     </a>
@@ -52,7 +52,7 @@
 
         </form>
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        
+
       </div>
     </div>
   </div>
