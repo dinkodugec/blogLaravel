@@ -10,15 +10,16 @@
     <div class="col-sm-6">
 
 
-      <form action="" method="post" enctype="multipart/form-data">
+      <form action="{{ route('user.profile.update', $user) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
 
         <div class="mb-4">
-          <img class="img-profile rounded-circle" src="https://dummyimage.com/300x300/000/fff" alt="">
+          <img class="img-profile rounded-circle" src="{{ asset("storage/" . $user->avatar)  }}" alt="">
         </div>
 
        <div class="form-group">
-        <input type="file">
+        <input type="file" name="avatar">
        </div>
 
        <div class="form-group">
@@ -28,6 +29,7 @@
                    class="form-control"
                    id="username"
                    value="{{ $user->username }}">
+
       </div>
 
         <div class="form-group">
