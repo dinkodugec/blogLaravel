@@ -21,6 +21,15 @@
         <input type="file">
        </div>
 
+       <div class="form-group">
+        <label for="name">Username</label>
+           <input type="text"
+                   name="username"
+                   class="form-control"
+                   id="username"
+                   value="{{ $user->username }}">
+      </div>
+
         <div class="form-group">
           <label for="name">NAme</label>
              <input type="text"

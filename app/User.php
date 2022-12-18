@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -37,6 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function setPasswordAttribute($value)  // mutator - when update password in models we get bcrypted
+    {
+
+     $this->attributes['password'] = bcrypt($value);
+
+    }
 
 
     public function posts()

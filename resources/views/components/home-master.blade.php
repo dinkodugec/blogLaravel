@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Blog Home - Start Bootstrap Template</title>
+  <title>Blog Home</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -48,6 +48,10 @@
            @else
            <li class="nav-item">
             <a class="nav-link" href="/login">Log In</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
           </li>
 
           @endif
