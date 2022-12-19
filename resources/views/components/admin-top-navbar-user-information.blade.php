@@ -44,8 +44,9 @@
         </button>
       </div>
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-      <div class="modal-footer">
 
+   
+    <div class="modal-footer">
         <form action="/logout" method="post">
             @csrf
             <button class="btn btn-danger">Logout</button>
@@ -54,6 +55,9 @@
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 
       </div>
+
+
+
     </div>
   </div>
 </div>

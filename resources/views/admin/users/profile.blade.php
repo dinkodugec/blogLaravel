@@ -15,7 +15,7 @@
         @method('PUT')
 
         <div class="mb-4">
-          <img class="img-profile rounded-circle" src="{{ asset("storage/" . $user->avatar)  }}" alt="">
+          <img class="img-profile rounded-circle" height="200px" width="200px" src="{{ asset("storage/" . $user->avatar)  }}" alt="">
         </div>
 
        <div class="form-group">

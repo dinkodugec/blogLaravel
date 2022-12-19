@@ -56,10 +56,22 @@
 
           @endif
 
-
+          @if (Auth::check())
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}">Logout</a>
           </li>
+         @endif
+
+
+          {{--      od something like this in boolean funny logic :)
+         @unless (!Auth::check())
+           <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+           </li>
+          @endunless --}}
+
+
+
 
 
 
