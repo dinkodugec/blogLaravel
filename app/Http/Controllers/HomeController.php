@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,8 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $users = User::all();
 
-        return view('home', ['posts' => $posts]);
+        return view('home', ['posts' => $posts], ['users'=> $users]);
     }
 
 
