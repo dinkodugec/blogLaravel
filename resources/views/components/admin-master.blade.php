@@ -60,7 +60,16 @@
       <!-- Nav Item - Pages Collapse Menu -->
        <x-admin-sidebar-posts-links> </x-admin-sidebar-posts-links>
 
+       @if (auth()->user()->userHasRole('Admin'))
+
+     {{--   <h1 class="h3 mb-4 text-gray-800">Blank Page</h1> --}}
+
        <x-admin-sidebar-users-links> </x-admin-sidebar-users-links>
+
+       @endif
+
+
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
