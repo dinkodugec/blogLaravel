@@ -128,7 +128,13 @@
                                 @method('PUT')
                                 @csrf
                                <input type="hidden" name="role" value="{{ $role->id }}">
-                              <button class="btn btn-primary">Attach</button>
+                              <button
+                                     class="btn btn-primary"
+                                     type="submit"
+                                         @if ($user->roles->contains($role))  {{-- /if user roles table contains $role, disabled that button --}}
+                                           disabled
+                                         @endif>
+                                   Attach</button>
                              </form>
                         </td>
                         <td>
@@ -136,7 +142,14 @@
                                 @method('PUT')
                                 @csrf
                                <input type="hidden" name="role" value="{{ $role->id }}">
-                               <button class="btn btn-danger">Detach</button>
+                               <button
+                                    class="btn btn-danger"
+                                    type="submit"
+                                       @if (!$user->roles->contains($role))  {{-- /if user roles table does not contains $role, disabled that button --}}
+                                        disabled
+                                      @endif
+
+                               >Detach</button>
                            </form>
                         </td>
                         </tr>
