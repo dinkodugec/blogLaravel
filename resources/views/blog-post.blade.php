@@ -42,14 +42,20 @@
       <!-- Comments Form -->
       <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
+
+
+
         <div class="card-body">
-          <form>
+          <form action="/posts/{post}/comments/{comment}" >
+            <input type="hidden" name="post_id" value="{{ $post->id }}">
             <div class="form-group">
-              <textarea class="form-control" rows="3"></textarea>
+                <label for="title">Comment</label>
+              <textarea class="form-control" name="content" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>
+
       </div>
 
       <!-- Single Comment -->

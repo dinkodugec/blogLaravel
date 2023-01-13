@@ -1,5 +1,6 @@
 <?php
 
+use App\Comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::get('/logout', 'HomeController@logout');
 Route::middleware('auth')->group(function(){
 
   Route::get('/admin', 'AdminsController@index')->name('admin.index');
+
+  Route::get('/posts/{post}/comments/{comment}', 'CommentController@store');
+
+
 
 
 /*   Route::get('/admin/posts/index', 'PostController@index')->name('post.index');

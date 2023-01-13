@@ -20,7 +20,7 @@ class PostController extends Controller
    public function create()
    {
 
-    $this->authorize('create', Post::class);  //check for auth user to can create
+   /*  $this->authorize('create', Post::class);  */ //check for auth user to can create
 
     return view('admin.posts.create');
 
@@ -87,7 +87,7 @@ class PostController extends Controller
    /*   foreach($posts as $post){
       $post->post_image = $this->getPostImageAttribute($post->post_image);
      }
- */    
+ */
     return view('admin.posts.index', ['posts' => $posts]);
 
    }
